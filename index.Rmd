@@ -26,7 +26,7 @@ library(gridExtra)
 The `LAGOSNE` package will be used for downloading the data into a local variable as follows:
 
 ```{r message=FALSE}
-Dbase <- lagosne_load(version = "1.087.1")
+Dbase <- lagosne_load(version = "1.087.1") 
 ```
 
 where the downloaded database `Dbase` is a very big and complex data frame. Thus, it is useful to extract a smaller database of the data that are going to be used for drawing the results.
@@ -38,7 +38,7 @@ summer_epi_nut <- Dbase$epi_nutr %>%
   filter(samplemonth %in% c(7,8,9)) %>%
   group_by(lagoslakeid,sampleyear) %>%
   summarize(meansummerchl=mean(chla)) %>%
-  mutate(logval=log10(meansummerchl))
+  mutate(logval=log10(meansummerchl)) 
 ```
 
 ```{r message=FALSE}
@@ -47,12 +47,12 @@ annual_epi_nut <- Dbase$epi_nutr %>%
   filter(sampleyear>=1990) %>%
   group_by(lagoslakeid,sampleyear) %>%
   summarize(meanannualchl=mean(chla)) %>%
-  mutate(logval=log10(meanannualchl))
+  mutate(logval=log10(meanannualchl)) 
 ```
 
 It is noteworthy to mention that most of the variables in the multi-lake databases have a lognormal distribution rather than a normal distribution ([Hakanson and Boullion, 2002](https://books.google.com/books/about/The_lake_foodweb.html?id=m28VAQAAIAAJ)); thus, it is recommended to use the `log10` transformation for modelling or visualization. 
 
-# Results
+# Results 
 In order to find out if the result of previous studies that the ecological condition of US lakes has not improved during the last two decades and in order to check if this conclusion is not a result of using annual chl-a concentration instead of only summer chl-a concentration, the following graph is used:
 
 ```{r message=FALSE, warning=FALSE}
